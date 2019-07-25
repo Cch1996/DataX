@@ -38,13 +38,12 @@ public class AdbpgWriter extends Writer {
             LOG.info("in Job.init(), config is:[\n{}\n]", originalConfig.toJSON());
             this.commonRdbmsWriterMaster =  new CommonRdbmsWriter.Job(DATABASE_TYPE);
             //convert to DatabaseConfig, use DatabaseConfig to check user configuration
-            //commonRdbmsWriterMaster.init(originalConfig);
             Adb4pgUtil.checkConfig(originalConfig);
         }
 
         @Override
         public void prepare() {
-            //commonRdbmsWriterMaster.prepare(originalConfig);
+
             Adb4pgUtil.prepare(originalConfig);
         }
 
@@ -59,13 +58,12 @@ public class AdbpgWriter extends Writer {
 
         @Override
         public void post() {
-            //this.commonRdbmsWriterMaster.post(this.originalConfig);
+
             Adb4pgUtil.post(originalConfig);
         }
 
         @Override
         public void destroy() {
-            //this.commonRdbmsWriterMaster.destroy(this.originalConfig);
 
         }
 
@@ -97,7 +95,7 @@ public class AdbpgWriter extends Writer {
 
         @Override
         public void prepare() {
-            //this.commonRdbmsWriterSlave.prepare(writerSliceConfig);
+
         }
 
         @Override
@@ -107,12 +105,12 @@ public class AdbpgWriter extends Writer {
 
         @Override
         public void post() {
-            //this.commonRdbmsWriterSlave.post(writerSliceConfig);
+
         }
 
         @Override
         public void destroy() {
-            //this.commonRdbmsWriterSlave.post(writerSliceConfig);
+
         }
 
     }
